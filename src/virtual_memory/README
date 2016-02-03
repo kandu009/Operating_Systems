@@ -1,0 +1,38 @@
+Project 4:
+
+Charandeep Parisineti - 5103173, paris102@umn.edu
+Ravali Kandur -5084769, kandu009@umn.edu
+
+Compiling and installing the scullBuffer device:
+--------------------------------------------------
+1. Execute Make: 
+   make
+2. If scull devices already exist then unload them first.
+   chmod +x unload.py
+   sudo ./unload.py
+   This may ask you for your root password.
+3. Load scull devices
+   chmod +x load.py
+   sudo ./load.py scull_size=x
+   This will create one scull buffer device: /dev/scullBuffer0
+4. Make producer
+	make producer
+5. Make consumer
+	make consumer
+
+Running / Testing:
+$ echo "hello world" | tee /dev/scullBuffer0
+hello world
+$ cat /dev/scullBuffer0
+hello world
+$ echo "foo 1 2 3" | tee /dev/scullBuffer0
+foo 1 2 3
+$ cat /dev/scullBuffer0
+foo 1 2 3
+$ sh test.sh
+//For testing it for a number of producer and consumer processes
+
+VM credentials:
+Host: x32-05.cselabs.umn.edu
+Username: x32-05
+Password: sehailk9
